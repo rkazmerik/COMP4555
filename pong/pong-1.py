@@ -14,7 +14,7 @@ def ball_animation():
 	if ball.colliderect(player) or ball.colliderect(opponent):
 		ball_speed_x *= -1
 
-def player_animation()
+def player_animation():
 	player.y += player_speed
 
 	if player.top <= 0:
