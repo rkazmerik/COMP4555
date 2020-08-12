@@ -1,5 +1,5 @@
 # COMP4555
-Learning python by designing five classic games
+Learning Python by building five classic games
 
 1. Setup Git
 2. Create github repository
@@ -7,9 +7,13 @@ Learning python by designing five classic games
 4. Install Python (Miniconda)
 5. Install Pip?
 
-## Projects
+# PROJECTS
+## Pong
 
-# PONG
+https://github.com/clear-code-projects/Pong_in_Pygame/blob/master/Pong10_sound.py
+
+https://www.youtube.com/watch?v=n1mKIK7lCx0
+
 1. pong-1.py
 * ball animation
 * player animation
