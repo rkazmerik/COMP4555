@@ -6,11 +6,13 @@ def ball_animation():
 	ball.x += ball_speed_x
 	ball.y += ball_speed_y
 
+	# Ball Collision (Wall)
 	if ball.top <= 0 or ball.bottom >= screen_height:
 		ball_speed_y *= -1
 	if ball.left <= 0 or ball.right >= screen_width:
-		ball_start()
+		ball_restart() #puts ball in middle after scoring
 
+	# Ball Collision (Player)
 	if ball.colliderect(player) or ball.colliderect(opponent):
 		ball_speed_x *= -1
 
@@ -33,13 +35,15 @@ def opponent_ai():
 	if opponent.bottom >= screen_height:
 		opponent.bottom = screen_height
 
-def ball_start():
+def ball_restart():
 	global ball_speed_x, ball_speed_y
 
+	# move ball to the center
 	ball.center = (screen_width/2, screen_height/2)
-	ball_speed_y *= random.choice((1,-1))
-	ball_speed_x *= random.choice((1,-1))
 
+	# start the ball in a random direction
+	ball_speed_y *= random.choice((1,-1)) #restarts ball in random direction
+	ball_speed_x *= random.choice((1,-1)) #restarts ball in random direction
 
 # General setup
 pygame.init()
@@ -61,17 +65,17 @@ player = pygame.Rect(screen_width - 20, screen_height / 2 - 70, 10,140)
 opponent = pygame.Rect(10, screen_height / 2 - 70, 10,140)
 
 # Game Variables
-ball_speed_x = 7 * random.choice((1,-1))
-ball_speed_y = 7 * random.choice((1,-1))
+ball_speed_x = 7 * random.choice((1,-1)) #starts ball in random direction
+ball_speed_y = 7 * random.choice((1,-1)) #starts ball in random direction
 player_speed = 0
 opponent_speed = 7
 
-# Game Loop
 while True:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			pygame.quit()
 			sys.exit()
+
 		if event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_UP:
 				player_speed -= 6
@@ -82,8 +86,7 @@ while True:
 				player_speed += 6
 			if event.key == pygame.K_DOWN:
 				player_speed -= 6
-	
-	#Game Logic
+
 	ball_animation()
 	player_animation()
 	opponent_ai()
@@ -95,6 +98,6 @@ while True:
 	pygame.draw.ellipse(screen, light_grey, ball)
 	pygame.draw.aaline(screen, light_grey, (screen_width / 2, 0),(screen_width / 2, screen_height))
 
-  # Loop Timer
+	# Loop Timer
 	pygame.display.flip()
 	clock.tick(60)

@@ -1,4 +1,4 @@
-import pygame, sys, random
+import pygame, sys
 
 def ball_animation():
 	global ball_speed_x, ball_speed_y
@@ -6,11 +6,13 @@ def ball_animation():
 	ball.x += ball_speed_x
 	ball.y += ball_speed_y
 
+	# Ball Collision (Wall)
 	if ball.top <= 0 or ball.bottom >= screen_height:
 		ball_speed_y *= -1
 	if ball.left <= 0 or ball.right >= screen_width:
-		ball_start()
+		ball_speed_x *= -1
 
+	# Ball Collision (Player)
 	if ball.colliderect(player) or ball.colliderect(opponent):
 		ball_speed_x *= -1
 
@@ -18,28 +20,9 @@ def player_animation():
 	player.y += player_speed
 
 	if player.top <= 0:
-		player.top = 0
+		player.top = 0 #detects player at top of screen
 	if player.bottom >= screen_height:
-		player.bottom = screen_height
-
-def opponent_ai():
-	if opponent.top < ball.y:
-		opponent.y += opponent_speed
-	if opponent.bottom > ball.y:
-		opponent.y -= opponent_speed
-
-	if opponent.top <= 0:
-		opponent.top = 0
-	if opponent.bottom >= screen_height:
-		opponent.bottom = screen_height
-
-def ball_start():
-	global ball_speed_x, ball_speed_y
-
-	ball.center = (screen_width/2, screen_height/2)
-	ball_speed_y *= random.choice((1,-1))
-	ball_speed_x *= random.choice((1,-1))
-
+		player.bottom = screen_height # detects player at bottom
 
 # General setup
 pygame.init()
@@ -61,32 +44,29 @@ player = pygame.Rect(screen_width - 20, screen_height / 2 - 70, 10,140)
 opponent = pygame.Rect(10, screen_height / 2 - 70, 10,140)
 
 # Game Variables
-ball_speed_x = 7 * random.choice((1,-1))
-ball_speed_y = 7 * random.choice((1,-1))
-player_speed = 0
-opponent_speed = 7
+ball_speed_x = 7
+ball_speed_y = 7
+player_speed = 0 #if not pressing a key, player stands still.
 
-# Game Loop
 while True:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			pygame.quit()
 			sys.exit()
-		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_UP:
+
+		if event.type == pygame.KEYDOWN: #key pressed
+			if event.key == pygame.K_UP: #up key
 				player_speed -= 6
-			if event.key == pygame.K_DOWN:
+			if event.key == pygame.K_DOWN: #down key
 				player_speed += 6
-		if event.type == pygame.KEYUP:
-			if event.key == pygame.K_UP:
+		if event.type == pygame.KEYUP: #key unpressed
+			if event.key == pygame.K_UP: #up key
 				player_speed += 6
-			if event.key == pygame.K_DOWN:
+			if event.key == pygame.K_DOWN: #down key
 				player_speed -= 6
-	
-	#Game Logic
+
 	ball_animation()
 	player_animation()
-	opponent_ai()
 
 	# Visuals 
 	screen.fill(bg_color)
@@ -95,6 +75,6 @@ while True:
 	pygame.draw.ellipse(screen, light_grey, ball)
 	pygame.draw.aaline(screen, light_grey, (screen_width / 2, 0),(screen_width / 2, screen_height))
 
-  # Loop Timer
+	# Loop Timer
 	pygame.display.flip()
 	clock.tick(60)
