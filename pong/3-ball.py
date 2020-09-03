@@ -42,7 +42,10 @@ while True:
   # Ball Collision (Player)
 	if ball.colliderect(player) or ball.colliderect(opponent):
 		ball_speed_x *= -1 #reverses direction
-	
+
+  #once we're done with ball animation, let's put it in it's own function
+	#remember: need to declare global variables for ball speeds
+
 	# Visuals 
 	screen.fill(bg_color)
 	pygame.draw.rect(screen, light_grey, player)

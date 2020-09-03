@@ -8,24 +8,20 @@ def ball_animation():
 
 	# Ball Collision (Top or Bottom)
 	if ball.top <= 0 or ball.bottom >= screen_height:
-		pygame.mixer.Sound.play(pong_sound) #play the pong sound
 		ball_speed_y *= -1
 	
 	# Player Scores
 	if ball.left <= 0: 
-		pygame.mixer.Sound.play(score_sound) #play the score sound
-		player_score += 1 
-		ball_restart() 
+		player_score += 1 #increment player score var
+		ball_restart() #start the ball in the middle
 
 	# Opponent Scores
 	if ball.right >= screen_width:
-		pygame.mixer.Sound.play(score_sound) #play the score sound
-		opponent_score += 1 
-		ball_restart() 
+		opponent_score += 1 #increment opponent score var
+		ball_restart() #start the ball in the middle
 
 	# Ball Collision (Player or Opponent)
 	if ball.colliderect(player) or ball.colliderect(opponent):
-		pygame.mixer.Sound.play(pong_sound) #play the pong sound
 		ball_speed_x *= -1
 
 def player_animation():
@@ -58,7 +54,6 @@ def ball_restart():
 	ball_speed_x *= random.choice((1,-1)) 
 
 # General setup
-pygame.mixer.pre_init(44100, -16, 2, 512) #resetting the sound buffer
 pygame.init()
 clock = pygame.time.Clock()
 
@@ -79,7 +74,7 @@ opponent = pygame.Rect(10, screen_height / 2 - 70, 10,140)
 
 # Game Variables
 ball_speed_x = 7 * random.choice((1,-1)) 
-ball_speed_y = 7 * random.choice((1,-1)) 
+ball_speed_y = 7 * random.choice((1,-1))
 player_speed = 0
 opponent_speed = 7
 
@@ -88,10 +83,6 @@ player_score = 0
 opponent_score = 0
 basic_font = pygame.font.Font('freesansbold.ttf', 32)
 
-# Sound
-pong_sound = pygame.mixer.Sound("./media/pong.ogg") #in the media folder
-score_sound = pygame.mixer.Sound("./media/score.ogg") #in the media folder
- 
 
 while True:
 	for event in pygame.event.get():
@@ -123,10 +114,10 @@ while True:
 
 	# Creating the surface for text
 	player_text = basic_font.render(f'{player_score}',False,light_grey)
-	screen.blit(player_text,(660,470)) 
+	screen.blit(player_text,(660,470)) #blit puts one surface on another
 
 	opponent_text = basic_font.render(f'{opponent_score}',False,light_grey)
-	screen.blit(opponent_text,(600,470)) 
+	screen.blit(opponent_text,(600,470)) #blit puts one surface on another
 
 	# Loop Timer
 	pygame.display.flip()

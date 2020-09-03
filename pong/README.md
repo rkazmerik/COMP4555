@@ -16,22 +16,29 @@
 * Ball collisions (wall)
 * Ball collisions (player)
 
-# 4-functions.py
-* Move ball collisions to function
-* Define some global variables
-
-# 5-player.py
+# 4-player.py
 * Handle user input
 * Create player speed var
 * Bound player to game window
 
-# 6-opponent.py
+# 5-opponent.py
 ? How to determine AI logic ?
 * Determine AI logic
 * AI animation
 * Bound opponent to game window
 
-# 7-score.py
+# 6-scoring.py
 * Reset the ball on score
 * Randomize the start position on score
 * Randomize start at begining of game
+
+# 7-scoreboard.py
+? Where in our code would 'scoring' happen ?
+* Create a basic font and size
+* Create the text object + surface
+* Put text surface on main surface
+
+# 8-sound.py
+* Load the sounds with pygame mixer
+* Play a sound on collision
+* Play a sound when someone scores
