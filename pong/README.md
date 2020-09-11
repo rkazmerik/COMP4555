@@ -1,3 +1,8 @@
+# Game 1 : PONG
+* ? What are the objects in Pong ?
+* ? What are the features of Pong ?
+* ? What is the challenge in Pong ?
+
 # 1-window.py
 * Pygame library
 * Basic game window
@@ -10,7 +15,7 @@
 * Colors
 
 # 3-ball.py
-? How to move a rect around the screen ?
+? How to move a ball around the screen ?
 * Setting ball speed
 * Moving the ball
 * Ball collisions (wall)

@@ -18,4 +18,4 @@ while True:
 			sys.exit()
 	
 	pygame.display.flip()
-	clock.tick(60) #redraws the screen every 60s
+	clock.tick(60) #redraws the screen every 0.6ms

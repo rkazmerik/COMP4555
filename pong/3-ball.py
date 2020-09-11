@@ -1,5 +1,26 @@
 import pygame, sys
 
+def ball_animation():
+	
+	global ball_speed_x, ball_speed_y
+
+	#Game Logic
+	ball.x += ball_speed_x
+	ball.y += ball_speed_y
+
+	# Ball Collision (Top or Bottom)
+	if ball.top <= 0 or ball.bottom >= screen_height:
+		ball_speed_y *= -1 #reverses trajectory
+
+	# Ball Collision (Left or Right)
+	if ball.left <= 0 or ball.right >= screen_width:
+		ball_speed_x *= -1 #reverses trajectory
+
+	# Ball Collision (Player or Opponent)
+	if ball.colliderect(player) or ball.colliderect(opponent):
+		ball_speed_x *= -1 #reverses tracjectory
+
+
 # General setup
 pygame.init()
 clock = pygame.time.Clock()
@@ -29,22 +50,7 @@ while True:
 			pygame.quit()
 			sys.exit()
 		
-	#Game Logic
-	ball.x += ball_speed_x
-	ball.y += ball_speed_y
-
-  # Ball Collision (Wall)
-	if ball.top <= 0 or ball.bottom >= screen_height:
-		ball_speed_y *= -1 #reverses direction
-	if ball.left <= 0 or ball.right >= screen_width:
-		ball_speed_x *= -1 #reverses direction
-
-  # Ball Collision (Player)
-	if ball.colliderect(player) or ball.colliderect(opponent):
-		ball_speed_x *= -1 #reverses direction
-
-  #once we're done with ball animation, let's put it in it's own function
-	#remember: need to declare global variables for ball speeds
+	ball_animation()
 
 	# Visuals 
 	screen.fill(bg_color)
@@ -53,6 +59,6 @@ while True:
 	pygame.draw.ellipse(screen, light_grey, ball)
 	pygame.draw.aaline(screen, light_grey, (screen_width / 2, 0),(screen_width / 2, screen_height))
 
-  # Loop Timer
+	# Loop Timer
 	pygame.display.flip()
 	clock.tick(60)
