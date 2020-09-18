@@ -47,3 +47,7 @@
 * Load the sounds with pygame mixer
 * Play a sound on collision
 * Play a sound when someone scores
+
+# 9-pong.py
+* Moved global variables above functions
+* Add a main function to execute the game loop

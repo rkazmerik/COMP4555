@@ -1,7 +1,7 @@
 import pygame, sys, random
 
 # Pygame Setup
-pygame.mixer.pre_init(44100, -16, 2, 512) #resetting the sound buffer
+pygame.mixer.pre_init(44100, -16, 2, 512) 
 pygame.init()
 clock = pygame.time.Clock()
 
@@ -32,8 +32,8 @@ opponent_score = 0
 basic_font = pygame.font.Font('freesansbold.ttf', 32)
 
 # Sound Effects
-pong_sound = pygame.mixer.Sound("./media/pong.ogg") #in the media folder
-score_sound = pygame.mixer.Sound("./media/score.ogg") #in the media folder
+pong_sound = pygame.mixer.Sound("./media/pong.ogg") 
+score_sound = pygame.mixer.Sound("./media/score.ogg") 
 
 
 def ball_animation():
@@ -44,24 +44,24 @@ def ball_animation():
 
 	# Ball Collision (Top or Bottom)
 	if ball.top <= 0 or ball.bottom >= screen_height:
-		pygame.mixer.Sound.play(pong_sound) #play the pong sound
+		pygame.mixer.Sound.play(pong_sound)
 		ball_speed_y *= -1
 	
 	# Player Scores
 	if ball.left <= 0: 
-		pygame.mixer.Sound.play(score_sound) #play the score sound
+		pygame.mixer.Sound.play(score_sound)
 		player_score += 1 
 		ball_restart() 
 
 	# Opponent Scores
 	if ball.right >= screen_width:
-		pygame.mixer.Sound.play(score_sound) #play the score sound
+		pygame.mixer.Sound.play(score_sound) 
 		opponent_score += 1 
 		ball_restart() 
 
 	# Ball Collision (Player or Opponent)
 	if ball.colliderect(player) or ball.colliderect(opponent):
-		pygame.mixer.Sound.play(pong_sound) #play the pong sound
+		pygame.mixer.Sound.play(pong_sound)
 		ball_speed_x *= -1
 
 def player_animation():
