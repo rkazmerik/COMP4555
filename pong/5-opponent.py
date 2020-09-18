@@ -27,6 +27,7 @@ def player_animation():
 
 
 def opponent_ai():
+  
 	if opponent.top < ball.y: #opponent above ball
 		opponent.y += opponent_speed
 	if opponent.bottom > ball.y: #opponent below ball

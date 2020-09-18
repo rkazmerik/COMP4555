@@ -10,8 +10,8 @@ def ball_animation():
 	if ball.top <= 0 or ball.bottom >= screen_height:
 		ball_speed_y *= -1
 	
-  # Ball Collision (Left or Right)
-  if ball.left <= 0 or ball.right >= screen_width:
+	# Ball Collision (Left or Right)
+	if ball.left <= 0 or ball.right >= screen_width:
 		ball_restart() #puts ball in middle after scoring
 
 	# Ball Collision (Player)

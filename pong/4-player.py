@@ -20,9 +20,9 @@ def player_animation():
 	player.y += player_speed
 
 	if player.top <= 0:
-		player.top = 0 #detects player at top of screen
+		player.top = 0 # puts player at top of screen
 	if player.bottom >= screen_height:
-		player.bottom = screen_height # detects player at bottom
+		player.bottom = screen_height # puts player at bottom
 
 # General setup
 pygame.init()
