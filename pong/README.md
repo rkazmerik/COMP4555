@@ -51,3 +51,7 @@
 # 9-pong.py
 * Moved global variables above functions
 * Add a main function to execute the game loop
+
+# 10-mod.py
+* Initialize the game with a different speed between 5-25
+* End the game after the player or opponent scores 10 points
