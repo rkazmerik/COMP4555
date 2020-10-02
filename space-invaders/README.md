@@ -8,7 +8,7 @@
 * create title
 * colour the screen & update
 
-## 2-images.py 
+## 2-player.py 
 * draw the player icon
 * move the player on key events
 * changing the player speed
