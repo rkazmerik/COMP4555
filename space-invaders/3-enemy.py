@@ -15,7 +15,7 @@ playerX_change = 0
 
 # Enemy
 enemyImg = pygame.image.load("./media/ufo.png")
-enemyX = random.randint(0, 800) #start the enemgy in a new position every time
+enemyX = random.randint(0, 800) #start the enemy in a new position every time
 enemyY = random.randint(50, 150)
 enemyX_change = 2
 enemyY_change = 40

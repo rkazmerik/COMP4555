@@ -1,4 +1,7 @@
-import pygame, sys, random
+import pygame
+import sys
+import random
+import speed
 
 # Pygame Setup
 pygame.mixer.pre_init(44100, -16, 2, 512) 
@@ -21,9 +24,8 @@ player = pygame.Rect(screen_width - 20, screen_height / 2 - 70, 10,140)
 opponent = pygame.Rect(10, screen_height / 2 - 70, 10,140)
 
 # Game Variables
-ball_speeds = list(range(5,30,5)) # start the game with a variable ball speed in steps of 5
-ball_speed_x = ball_speeds[random.randint(0, 4)] * random.choice((1,-1))
-ball_speed_y = ball_speeds[random.randint(0, 4)] * random.choice((1,-1)) 
+ball_speed_x = speed.get_ball_speed()
+ball_speed_y = speed.get_ball_speed()
 player_speed = 0
 opponent_speed = 7
 
@@ -104,7 +106,7 @@ if __name__ == "__main__":
         pygame.quit()
         sys.exit()
 
-      if player_score >= 10 or opponent_score >= 10: # check to see when either score hits 10
+      if player_score >= 10 or opponent_score >= 10:
         pygame.quit()
         sys.exit()
       
