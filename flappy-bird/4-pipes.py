@@ -2,34 +2,6 @@ import pygame
 import sys
 import random
 
-def draw_floor():
-  screen.blit(floor_surface, (floor_x_pos,900))
-  screen.blit(floor_surface, (floor_x_pos + 576 ,900)) 
-
-def create_pipe(): #create a new pipe
-  randome_pipe_pos = random.choice(pipe_height) #choose a random pipe height
-  bottom_pipe = pipe_surface.get_rect(midtop = (700, randome_pipe_pos))
-  top_pipe = pipe_surface.get_rect(midbottom = (700, randome_pipe_pos-300))
-  
-  return top_pipe, bottom_pipe #return the tuple of both pipes
-
-def move_pipes(pipes):
-  
-  for pipe in pipes: #move each pipe to the left by 5px
-    pipe.centerx -= 5
-  
-  return pipes
-
-def draw_pipes(pipes): #draw each pipe on the screen
-  
-  for pipe in pipes:
-    
-    if pipe.bottom > 1024: 
-      screen.blit(pipe_surface, pipe)
-    else: #flip the pipe image
-      flip_pipe = pygame.transform.flip(pipe_surface, False, True)
-      screen.blit(flip_pipe, pipe)
-
 # Pygame Variables
 pygame.init()
 screen = pygame.display.set_mode((576, 1024))
@@ -62,6 +34,36 @@ SPAWNPIPE = pygame.USEREVENT #create a new event for adding a pipe
 pygame.time.set_timer(SPAWNPIPE, 1200) #create a timer for 1.2s
 pipe_height = [400,600,800]
 
+
+def draw_floor():
+  screen.blit(floor_surface, (floor_x_pos,900))
+  screen.blit(floor_surface, (floor_x_pos + 576 ,900)) 
+
+def create_pipe(): #create a new pipe
+  randome_pipe_pos = random.choice(pipe_height) #choose a random pipe height
+  bottom_pipe = pipe_surface.get_rect(midtop = (700, randome_pipe_pos))
+  top_pipe = pipe_surface.get_rect(midbottom = (700, randome_pipe_pos-300))
+  
+  return top_pipe, bottom_pipe #return the tuple of both pipes
+
+def move_pipes(pipes):
+  
+  for pipe in pipes: #move each pipe to the left by 5px
+    pipe.centerx -= 5
+  
+  return pipes
+
+def draw_pipes(pipes): #draw each pipe on the screen
+  
+  for pipe in pipes:
+    
+    if pipe.bottom > 1024: 
+      screen.blit(pipe_surface, pipe)
+    else: #flip the pipe image
+      flip_pipe = pygame.transform.flip(pipe_surface, False, True)
+      screen.blit(flip_pipe, pipe)
+
+      
 # Game Loop
 while True:
 

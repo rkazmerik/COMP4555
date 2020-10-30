@@ -1,10 +1,6 @@
 import pygame
 import sys
 
-def draw_floor():
-  screen.blit(floor_surface, (floor_x_pos,900))
-  screen.blit(floor_surface, (floor_x_pos + 576 ,900)) 
-
 # Pygame Variables
 pygame.init()
 screen = pygame.display.set_mode((576, 1024))
@@ -27,6 +23,11 @@ floor_x_pos = 0
 bird_surface = pygame.image.load('./assets/bluebird-midflap.png').convert()
 bird_surface = pygame.transform.scale2x(bird_surface)
 bird_rect = bird_surface.get_rect(center = (100,512)) #add a rect object for the bird
+
+
+def draw_floor():
+  screen.blit(floor_surface, (floor_x_pos,900))
+  screen.blit(floor_surface, (floor_x_pos + 576 ,900)) 
 
 # Game Loop
 while True:
