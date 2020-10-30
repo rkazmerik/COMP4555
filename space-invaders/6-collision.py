@@ -19,7 +19,7 @@ playerX_change = 0
 
 # Enemy
 enemyImg = pygame.image.load("./media/ufo.png")
-enemyX = random.randint(0, 735) # to prevent enemy from sliding down the window
+enemyX = random.randint(0, 735) # to prevent enemy from sliding down the
 enemyY = random.randint(50, 150)
 enemyX_change = 2
 enemyY_change = 40
@@ -50,7 +50,7 @@ def isCollision(enemyX, enemyY, bulletX, bulletY):
 
 	# translate the formula for distance into python
 	distance = math.sqrt(math.pow(enemyX-bulletX,2) + math.pow(enemyY-bulletY,2))
-
+  
 	if distance < 27: # detect a collision
 		return True
 	else:
