@@ -41,8 +41,8 @@ while True:
 
     if event.type == pygame.KEYDOWN: #detect space bar press
       if event.key == pygame.K_SPACE:
-        bird_movement == 0 #make the bird jump on space
-        bird_movement -= 12
+        bird_movement = 0 
+        bird_movement -= 12 #make the bird jump on space
 
   # Surfaces
   screen.blit(bg_surface, (0,0))

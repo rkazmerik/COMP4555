@@ -15,7 +15,7 @@ floor_surface = pygame.image.load('./assets/base.png') #import the floor surface
 floor_surface = pygame.transform.scale2x(floor_surface)
 floor_x_pos = 0
 
-def draw_floor();
+def draw_floor():
   screen.blit(floor_surface, (floor_x_pos,900)) #draw the floor on the screen
   screen.blit(floor_surface, (floor_x_pos + 576 ,900)) #draw a second floor
 
